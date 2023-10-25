@@ -239,3 +239,11 @@ def analyse_uploaded_file(uploaded_file,command)->str:
         return "Command analyse_uploaded_file returned: " + str(text)[:TOKEN_LIMIT]
     except Exception as error:
         return f"Command analyse_uploaded_file returned: {error}"
+    
+def execute_python_file(filePath):
+    try:
+        with open(filePath,'r') as file:
+            python_code = file.read()
+            return exec(python_code)
+    except:
+        print(f"Error the file path{filePath} does not exist")
